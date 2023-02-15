@@ -197,7 +197,7 @@ print("\n", "*"*40, "\n")
 
 
 # Borrar datos de MySQL
-sql = """DELETE FROM clientes WHERE nombre = "Anderson1" """
+sql = """DELETE FROM clientes WHERE id = 10 """
 cursor.execute(sql)
 
 sql = """SELECT * FROM clientes"""
@@ -209,7 +209,27 @@ for dato in datos:
 print("\n", "*"*40, "\n")
 
 # Si añadimos otro dato el id del nuevo dato sera el siguiente al dato que hemos borrado es decir que el dato que se borro se llevo consigo mismo el id
-sql = """INSERT INTO clientes (nombre, dirección) VALUES ("Bryan Solano", "Pedro Vicente Maldonado")"""
+# sql = """INSERT INTO clientes (nombre, dirección) VALUES ("Bryan Solano", "Pedro Vicente Maldonado")"""
+# cursor.execute(sql)
+
+# sql = """SELECT * FROM clientes"""
+# cursor.execute(sql)
+# datos = cursor.fetchall()
+# for dato in datos:
+#     print(dato)
+    
+# print("\n", "*"*40, "\n")
+
+
+
+
+# Actualizar datos en MySQL
+# sql = """UPDATE clientes SET nombre = "Bryan Quille" WHERE nombre = "Bryan" """
+# sql = """UPDATE clientes SET nombre = "Karla Villegas" WHERE id = 2 """
+# sql = """UPDATE clientes SET nombre = "Veronica Torres" WHERE dirección = "Machala" """
+# sql = """UPDATE clientes SET nombre = "Camila Baldeón" WHERE nombre = "Camila" """
+# sql = """UPDATE clientes SET nombre = "Antonio Torres" WHERE id = 5 """
+sql = """UPDATE clientes SET nombre = "Francis Cevallos" WHERE id = 6 """
 cursor.execute(sql)
 
 sql = """SELECT * FROM clientes"""
@@ -223,12 +243,28 @@ print("\n", "*"*40, "\n")
 
 
 
-
-
+# Limitar busquedas en MySQL
+# sql = """SELECT * FROM clientes LIMIT 3 """  # Nos trae los tres primeros registros
+sql = """SELECT * FROM clientes LIMIT 3 OFFSET 2 """  # Nos trae tres registros a partir de la fila 2 (no incluye la fila 2)
+cursor.execute(sql)
+datos = cursor.fetchall()
+for dato in datos:
+    print(dato)
     
+print("\n", "*"*40, "\n")
 
 
 
+
+# Eliminar una tabla
+# cursor.execute("SHOW TABLES")  # Veriicamos las tablas existentes
+# for tb in cursor:
+#     print(tb)
+# sql = """DROP TABLE empleados """  # Eliminamos la tabla deseada
+# cursor.execute(sql)
+# cursor.execute("SHOW TABLES")  # Veriicamos que se haya borrado la tabla
+# for tb in cursor:
+#     print(tb)
 
 
 
